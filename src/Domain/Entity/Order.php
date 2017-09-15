@@ -10,7 +10,7 @@ class Order {
 	protected $total;
 
 	public function getCustomer() {
-		return $this->$customer;
+		return $this->customer;
 	}
 
 	public function setCustomer($customer) {
@@ -19,7 +19,7 @@ class Order {
 	}
 
 	public function getOrderNumber() {
-		return $this->$orderNumber;
+		return $this->orderNumber;
 	}
 
 	public function setOrderNumber($orderNumber) {
@@ -28,7 +28,7 @@ class Order {
 	}
 
 	public function getDescription() {
-		return $this->$description;
+		return $this->description;
 	}
 
 	public function setDescription($description) {
@@ -37,7 +37,7 @@ class Order {
 	}
 
 	public function getTotal() {
-		return $this->$total;
+		return $this->total;
 	}
 
 	public function setTotal($total) {

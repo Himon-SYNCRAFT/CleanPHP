@@ -9,7 +9,7 @@ class Invoice {
 	protected $total;
 
 	public function getOrder() {
-		return $this->$order;
+		return $this->order;
 	}
 
 	public function setOrder($order) {
@@ -18,7 +18,7 @@ class Invoice {
 	}
 
 	public function getInvoiceDate() {
-		return $this->$invoiceDate;
+		return $this->invoiceDate;
 	}
 
 	public function setInvoiceDate($invoiceDate) {
@@ -27,7 +27,7 @@ class Invoice {
 	}
 
 	public function getTotal() {
-		return $this->$total;
+		return $this->total;
 	}
 
 	public function setTotal($total) {
