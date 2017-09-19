@@ -4,7 +4,7 @@ namespace CleanPhp\Invoicer\Persistence\Zend\DataTable;
 
 
 use CleanPhp\Invoicer\Domain\Entity\AbstractEntity;
-use CleanPhp\Invoicer\Domain\Repository\RepositoryIterface;
+use CleanPhp\Invoicer\Domain\Repository\RepositoryInterface;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 
