@@ -7,6 +7,10 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
+
+use CleanPhp\Invoicer\Service\InputFilter\CustomerInputFilter;
+use Zend\Stdlib\Hydrator\ClassMethods;
+
 return array(
 	'router' => array(
 		'routes' => array(
@@ -59,6 +63,18 @@ return array(
 						'action' => 'index'
 					],
 				],
+				'may_terminate' => true,
+				'child_routes' => [
+					'create' => [
+						'type' => 'Segment',
+						'options' => [
+							'route' => '/new',
+							'defaults' => [
+								'action' => 'new',
+							],
+						],
+					],
+				],
 			],
 			'orders' => [
 				'type' => 'Segment',
@@ -108,7 +124,9 @@ return array(
 		'factories' => [
 			'Application\Controller\Customers' => function($sm) {
 				return new \Application\Controller\CustomersController(
-					$sm->getServiceLocator()->get('CustomerTable')
+					$sm->getServiceLocator()->get('CustomerTable'),
+					new CustomerInputFilter(),
+					new ClassMethods()
 				);
 			},
 		],
@@ -136,4 +154,9 @@ return array(
 			),
 		),
 	),
+	'view_helpers' => [
+		'invokables' => [
+			'validationErrors' => 'Application\View\Helper\ValidationErrors',
+		],
+	],
 );
