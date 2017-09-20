@@ -65,12 +65,22 @@ return array(
 				],
 				'may_terminate' => true,
 				'child_routes' => [
-					'create' => [
+					'new' => [
 						'type' => 'Segment',
 						'options' => [
 							'route' => '/new',
 							'defaults' => [
-								'action' => 'new',
+								'action' => 'new-or-edit',
+							],
+						],
+					],
+					'edit' => [
+						'type' => 'Segment',
+						'options' => [
+							'route' => '/edit/:id',
+							'constraints' => ['id' => '[0-9]+'],
+							'defaults' => [
+								'action' => 'new-or-edit',
 							],
 						],
 					],
