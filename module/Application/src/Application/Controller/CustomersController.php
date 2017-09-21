@@ -50,7 +50,7 @@ class CustomersController extends AbstractActionController {
 					->commit();
 
 				$this->flashMessenger()->addSuccessMessage('Customer Saved');
-				$this->redirect()->toUrl('/customers/edit' . $customer->getId());
+				$this->redirect()->toUrl('/customers/edit/' . $customer->getId());
 			} else {
 				$this->hydrator->hydrate(
 					$this->params()->fromPost(),

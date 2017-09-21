@@ -89,7 +89,7 @@ return array(
 			'orders' => [
 				'type' => 'Segment',
 				'options' => [
-					'route' => '/orders',
+					'route' => '/orders[/:action[/:id]]',
 					'defaults' => [
 						'controller' => 'Application\Controller\Orders',
 						'action' => 'index'
@@ -137,6 +137,11 @@ return array(
 					$sm->getServiceLocator()->get('CustomerTable'),
 					new CustomerInputFilter(),
 					new ClassMethods()
+				);
+			},
+			'Application\Controller\Orders' => function($sm) {
+				return new \Application\Controller\OrdersController(
+					$sm->getServiceLocator()->get('OrderTable')
 				);
 			},
 		],

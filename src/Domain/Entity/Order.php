@@ -3,9 +3,9 @@
 namespace CleanPhp\Invoicer\Domain\Entity;
 
 
-class Order {
+class Order extends AbstractEntity {
 	protected $customer;
-	protected $orederNumber;
+	protected $orderNumber;
 	protected $description;
 	protected $total;
 
