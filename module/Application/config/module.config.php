@@ -9,6 +9,7 @@
 
 
 use CleanPhp\Invoicer\Service\InputFilter\CustomerInputFilter;
+use CleanPhp\Invoicer\Service\InputFilter\OrderInputFilter;
 use Zend\Stdlib\Hydrator\ClassMethods;
 
 return array(
@@ -141,7 +142,10 @@ return array(
 			},
 			'Application\Controller\Orders' => function($sm) {
 				return new \Application\Controller\OrdersController(
-					$sm->getServiceLocator()->get('OrderTable')
+					$sm->getServiceLocator()->get('OrderTable'),
+					$sm->getServiceLocator()->get('CustomerTable'),
+					new OrderInputFilter(),
+					$sm->getServiceLocator()->get('OrderHydrator')
 				);
 			},
 		],

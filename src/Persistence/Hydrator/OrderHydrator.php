@@ -28,6 +28,10 @@ class OrderHydrator implements HydratorInterface {
 			$order->setCustomer(
 				$this->customerRepository->getById($data['customer_id'])
 			);
+		} else if (isset($data['customer'])) {
+			$order->setCustomer(
+				$this->customerRepository->getById($data['customer']['id'])
+			);
 		}
 
 		return $order;
