@@ -64,15 +64,13 @@ class OrdersController extends AbstractActionController {
 					$order
 				);
 
-				print_r($order);
-
 				$this->orderRepository
 					->begin()
 					->persist($order)
 					->commit();
 
 				$this->flashMessenger()->addSuccessMessage('Order Created');
-				$this->redirect()->toUrl('/order/view/' . $order->getId());
+				$this->redirect()->toUrl('/orders/view/' . $order->getId());
 			} else {
 				$this->hydrator->hydrate(
 					$this->params()->fromPost(),

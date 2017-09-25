@@ -35,7 +35,7 @@ abstract class AbstractDataTable implements RepositoryInterface {
 		$data = $this->hydrator->extract($entity);
 
 		if ($this->hasIdentity($entity)) {
-			$this->gateway->update($data, ['id' => $entity->getid()]);
+			$this->gateway->update($data, ['id' => $entity->getId()]);
 		} else {
 			$this->gateway->insert($data);
 			$entity->setId($this->gateway->getLastInsertValue());
