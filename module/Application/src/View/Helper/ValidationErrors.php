@@ -3,6 +3,7 @@
 namespace Application\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
+use Vnn\Keyper\Keyper;
 
 
 class ValidationErrors extends AbstractHelper {
@@ -21,12 +22,8 @@ class ValidationErrors extends AbstractHelper {
 			return false;
 		}
 
-		$errors = $this->getView()->errors;
+		$errors = Keyper::create($this->getView()->errors);
 
-		if (isset($errors[$element])) {
-			return $errors[$element];
-		}
-
-		return false;
+		return $errors->get($element) ?: false;
 	}
 }

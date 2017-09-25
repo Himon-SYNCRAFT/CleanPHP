@@ -53,4 +53,18 @@ describe('Persistence\Hydrator\OrderHydrator', function() {
 			$this->getProphet()->checkPredictions();
 		});
 	});
+
+	describe('->extract()', function() {
+		it('should extract the customer object', function() {
+			$order = new Order();
+			$order->setCustomer((new Customer()))->setId(14);
+
+			$data = $this->hydrator->extract($order);
+
+			assert(
+				$order->getCustomer()->getId() === $data['customer_id'],
+				'customer_id is not correct'
+			);
+		});
+	});
 });
