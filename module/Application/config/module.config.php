@@ -137,25 +137,25 @@ return array(
 		'factories' => [
 			'Application\Controller\Customers' => function($sm) {
 				return new \Application\Controller\CustomersController(
-					$sm->getServiceLocator()->get('CustomerTable'),
+					$sm->getServiceLocator()->get('CustomerRepository'),
 					new CustomerInputFilter(),
 					new ClassMethods()
 				);
 			},
 			'Application\Controller\Orders' => function($sm) {
 				return new \Application\Controller\OrdersController(
-					$sm->getServiceLocator()->get('OrderTable'),
-					$sm->getServiceLocator()->get('CustomerTable'),
+					$sm->getServiceLocator()->get('OrderRepository'),
+					$sm->getServiceLocator()->get('CustomerRepository'),
 					new OrderInputFilter(),
 					$sm->getServiceLocator()->get('OrderHydrator')
 				);
 			},
 			'Application\Controller\Invoices' => function($sm) {
 				return new \Application\Controller\InvoicesController(
-					$sm->getServiceLocator()->get('InvoiceTable'),
-					$sm->getServiceLocator()->get('OrderTable'),
+					$sm->getServiceLocator()->get('InvoiceRepository'),
+					$sm->getServiceLocator()->get('OrderRepository'),
 					new InvoicingService(
-						$sm->getServiceLocator()->get('OrderTable'),
+						$sm->getServiceLocator()->get('OrderRepository'),
 						new InvoiceFactory()
 					)
 				);
