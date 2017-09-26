@@ -31,27 +31,12 @@ class OrderHydrator implements HydratorInterface {
 	}
 
 	public function hydrate(array $data, $order) {
-		$customer = null;
+		$id = $data['customer']['id'] ?? null;
 
-		if (isset($data['customer'])) {
-			$customer = $this->wrappedHydrator->hydrate(
-				$data['customer'],
-				new Customer()
-			);
-
-			unset($data['customer']);
+		if ($id) {
+			$data['customer'] = $this->customerRepository->getById($id);
 		}
 
-		if (isset($data['customer_id'])) {
-			$customer = $this->customerRepository->getById($data['customer_id']);
-		}
-
-		$order = $this->wrappedHydrator->hydrate($data, $order);
-
-		if ($customer) {
-			$order->setCustomer($customer);
-		}
-
-		return $order;
+		return $this->wrappedHydrator->hydrate($data, $order);
 	}
 }
