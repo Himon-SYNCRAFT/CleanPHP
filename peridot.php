@@ -12,12 +12,12 @@ return function(EventEmitterInterface $emitter) {
 	$coverage->register();
 
 	$emitter->on('code-coverage.start', function(CodeCoverageReporter $reporter) {
-		$reporter->addDirectoryToWhiteList(__DIR__ . '/src');
+		$reporter->addDirectoryToWhiteList(__DIR__ . '/core');
 	});
 
     $watcher = new WatcherPlugin($emitter);
 	$watcher->setEvents([WatcherInterface::ALL_EVENT]);
-	$watcher->track(__DIR__ . '/src');
+	$watcher->track(__DIR__ . '/core');
 
 	new ProphecyPlugin($emitter);
 };
