@@ -167,6 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
+		Mrkrstphr\LaravelIndoctrinated\DoctrineOrmServiceProvider::class,
 
         /*
          * Application Service Providers...
