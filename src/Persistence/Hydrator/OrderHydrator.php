@@ -6,6 +6,7 @@ use CleanPhp\Invoicer\Domain\Entity\Customer;
 use CleanPhp\Invoicer\Domain\Repository\CustomerRepositoryInterface;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 
+
 class OrderHydrator implements HydratorInterface {
 	protected $wrappedHydrator;
 	protected $customerRepository;

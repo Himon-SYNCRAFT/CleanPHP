@@ -8,6 +8,8 @@
  */
 
 
+use CleanPhp\Invoicer\Domain\Factory\InvoiceFactory;
+use CleanPhp\Invoicer\Domain\Service\InvoicingService;
 use CleanPhp\Invoicer\Service\InputFilter\CustomerInputFilter;
 use CleanPhp\Invoicer\Service\InputFilter\OrderInputFilter;
 use Zend\Stdlib\Hydrator\ClassMethods;
@@ -100,7 +102,7 @@ return array(
 			'invoices' => [
 				'type' => 'Segment',
 				'options' => [
-					'route' => '/invoices',
+					'route' => '/invoices[/:action[/:id]]',
 					'defaults' => [
 						'controller' => 'Application\Controller\Invoices',
 						'action' => 'index'
@@ -146,6 +148,16 @@ return array(
 					$sm->getServiceLocator()->get('CustomerTable'),
 					new OrderInputFilter(),
 					$sm->getServiceLocator()->get('OrderHydrator')
+				);
+			},
+			'Application\Controller\Invoices' => function($sm) {
+				return new \Application\Controller\InvoicesController(
+					$sm->getServiceLocator()->get('InvoiceTable'),
+					$sm->getServiceLocator()->get('OrderTable'),
+					new InvoicingService(
+						$sm->getServiceLocator()->get('OrderTable'),
+						new InvoiceFactory()
+					)
 				);
 			},
 		],

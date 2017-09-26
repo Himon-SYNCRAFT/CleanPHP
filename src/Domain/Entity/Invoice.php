@@ -3,7 +3,7 @@
 namespace CleanPhp\Invoicer\Domain\Entity;
 
 
-class Invoice {
+class Invoice extends AbstractEntity {
 	protected $order;
 	protected $invoiceDate;
 	protected $total;
