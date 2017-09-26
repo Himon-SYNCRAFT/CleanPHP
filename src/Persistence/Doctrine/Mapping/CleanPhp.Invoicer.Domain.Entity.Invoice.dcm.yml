@@ -16,5 +16,5 @@ CleanPhp\Invoicer\Domain\Entity\Invoice:
       scale: 2
   manyToOne:
     order:
-      targetEntity: Clean\Invoicer\Domain\Entity\Order
+      targetEntity: CleanPhp\Invoicer\Domain\Entity\Order
       inverseBy: invoices

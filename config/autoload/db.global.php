@@ -11,7 +11,7 @@ return [
 					realpath(__DIR__ . '/../../src/Persistence/Doctrine/Mapping'),
 				],
 			],
-			'orm_defaults' => [
+			'orm_default' => [
 				'drivers' => ['CleanPhp\Invoicer\Domain\Entity' => 'orm_driver']
 			],
 		],

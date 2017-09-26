@@ -12,7 +12,7 @@ abstract class AbstractDoctrineRepository implements RepositoryInterface {
 	protected $entityClass;
 
 	public function __construct(EntityManager $entityManager) {
-		if (empty($this->entityManager)) {
+		if (empty($this->entityClass)) {
 			throw new \RuntimeException(get_class($this) . '::$entityClass is not defined');
 		}
 
@@ -24,7 +24,7 @@ abstract class AbstractDoctrineRepository implements RepositoryInterface {
 	}
 
 	public function getAll() {
-		return $this->entityManager->getRepository($this->entityClass)->getAll();
+		return $this->entityManager->getRepository($this->entityClass)->findAll();
 	}
 
 	public function getBy(
